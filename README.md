@@ -14,6 +14,6 @@
 |--|--|--|--|--|--|--|--|--|--|
 |1|lgb_gbdt+kfold12+SMOTE|train_err|'boosting_type' : 'gbdt','objective': 'binary','metric':'auc','learning_rate':'0.01','seed':1015,num_boost_round = 1000,early_stopping_rounds = 50|0.9098|0.8279|0.9978|0.5770|0.8163||
 |2|lgb_dart+kfold5+SMOTE|train_err|'boosting_type':'dart','objective':'binary','metric': 'auc','learning_rate': '0.02','seed':1015,num_boost_round = 1200, early_stopping_rounds = 200|0.9021|0.8264|0.9611|0.6413|0.8112||
-|3|xgb+kfold5+SMOTE|train_err|'objective':'binary:logistic','eval_metric' :'auc','early_stoppings':100,num_boost_round=1000|0.8886|0.8120|0.9390|0.6855|0.8034|0.8*(num1)+0.1*(num2)+0.1*(num3)=0.81320|
+|3|xgb+kfold5+SMOTE|train_err|'objective':'binary:logistic','eval_metric' :'auc','early_stoppings':100,num_boost_round=1000|0.8886|0.8120|0.9390|0.6855|0.8034|0.8*(num1)+0.1*(num2)+0.1*(num3)=**0.81320**|
 | | | | | | | | | | |
-|same model as the one above| | | | | | | | |0.6*(num1)+0.2*(num2)+0.2*(num3)=0.0.81226|
+|| | |same model as the one above | | | | | |0.6*(num1)+0.2*(num2)+0.2*(num3)=**0.81226**|
