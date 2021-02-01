@@ -1,5 +1,33 @@
 # LG_Dacon
 
+## 모델, 사용한 데이터, 파라미터튜닝, 스코어 소개 
+
+
+|모델|훈련데이터|파라미터튜닝|스코어|
+|--|--|--|--|
+|XGBOOST|train_err|threshold=.5 early_stoppings=100 num_boost_round=1000 eval_metric='auc' objective='binary:logistic' |0.702084|
+|XGBOOST+Kfold5|train_err|threshold=.5 early_stoppings=50 num_boost_round=1000 eval_metric='auc' objective='binary:logistic' |0.711779|
+|LGB+kfold5|train_err+train_quality|threshold=.5 early_stoppings=3 num_boost_round=1000 eval_metric='auc' objective='binary' boosting_type='gbdt' |0.658334|
+|LGB+kfold5|train_err+train_quality|threshold=.35 early_stoppings=3 num_boost_round=1000 eval_metric='auc' objective='binary' boosting_type='gbdt' |0.728858|
+|LGB+PCA35+Kfold5|train_err+train_quality|threshold=.5 early_stoppings=50 num_boost_round=1000 eval_metric='auc' objective='binary:logistic' |0.624817|
+|RF|train_err|기본값|0.704615|
+|LGB+Kfold+SMOTE|train_err|현재 파라미터 튜닝하며 성능 Check중...|0.81xxx|
+
+### 1. 알게된 점
+- train_err와 train_quality병합하여 결측치 처리하여 modeling하면 성능이 좋지않았다. 
+- train_err이 레이블값에 미치는 영향이 큰 것으로 나타났다. 
+- xgboost와 lgb가 그레디언트 부스팅에선 가장 성능이 좋았지만 그래도 0.7초반이라 낮았다. 
+- random forest의 경우 세세한 파라미터 튜닝은 하지 않았지만 default로 분석하니 0.7의 성능이 나왔다. 
+- 현재는 lgb+kfold에 레이블(1,0)의 불균형(imbalanced)이 심할 때 비율을 같게 맞춰주는 방법인데 성능효과에 탁월하다는 것을 발견했다.   
+    ->  현재 파라미터 튜닝하면서 성능개선을 계속 진행중입니다. 
+  
+  
+### 2. eda폴더
+
+- train_err와 train_quality간의 관계가 어떤지 전처리 및 분석한 결론을 정리했습니다. 
+
+
+**추후에 계속 update** 
 
 |model|data|parameter tuning|auc_score|accuracy|precision|recall|f1_score|final_score|
 |--|--|--|--|--|--|--|--|--|
